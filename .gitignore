@@ -1,0 +1,34 @@
+# Night Watch — Python / Build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.spec
+
+# Night Watch data (recorded events, database)
+night_watch_data/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Buildozer (Phase 5+)
+.buildozer/
+*.apk
+*.aab
+
+# Misc
+*.csv
+xtra

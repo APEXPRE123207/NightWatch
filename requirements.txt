@@ -1,0 +1,3 @@
+# Night Watch — Phase 1 (Desktop Proof of Concept)
+numpy>=1.23
+sounddevice>=0.4
