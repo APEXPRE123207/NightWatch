@@ -85,3 +85,23 @@ class DesktopAudioSource(AudioSource):
             self._stream.stop()
             self._stream.close()
             self._stream = None
+
+
+def get_audio_source(sample_rate: int = 16000, chunk_size: int = 8000) -> AudioSource:
+    """
+    Factory function to return the appropriate AudioSource for the current platform.
+    Returns AndroidAudioSource on Android, and DesktopAudioSource on desktop.
+    """
+    try:
+        from kivy.utils import platform
+        is_android = (platform == "android")
+    except ImportError:
+        import sys
+        is_android = hasattr(sys, "getandroidapilevel")
+
+    if is_android:
+        from night_watch.android_audio_source import AndroidAudioSource
+        return AndroidAudioSource(sample_rate=sample_rate, chunk_size=chunk_size)
+    else:
+        return DesktopAudioSource(sample_rate=sample_rate, chunk_size=chunk_size)
+

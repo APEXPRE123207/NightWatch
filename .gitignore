@@ -5,6 +5,7 @@ __pycache__/
 dist/
 build/
 *.spec
+!buildozer.spec
 
 # Night Watch data (recorded events, database)
 night_watch_data/

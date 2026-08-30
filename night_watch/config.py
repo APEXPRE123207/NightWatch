@@ -66,3 +66,41 @@ DISPLAY_RMS_MAX = 0.25
 DISPLAY_FLUX_MAX = 1.0
 DISPLAY_CENTROID_MAX = 6000.0   # Hz
 DISPLAY_ZCR_MAX = 0.5
+
+# ─── Storage Helpers ──────────────────────────────────────────────────────────
+
+import os
+
+
+def get_data_dir() -> str:
+    """
+    Return app data directory:
+    - Android: app-private internal storage
+    - Desktop: ./night_watch_data in project directory
+    """
+    try:
+        from kivy.utils import platform
+        is_android = (platform == "android")
+    except ImportError:
+        import sys
+        is_android = hasattr(sys, "getandroidapilevel")
+
+    if is_android:
+        try:
+            from jnius import autoclass
+            PythonActivity = autoclass("org.kivy.android.PythonActivity")
+            context = PythonActivity.mActivity.getApplicationContext()
+            return context.getFilesDir().getAbsolutePath()
+        except Exception:
+            try:
+                PythonService = autoclass("org.kivy.android.PythonService")
+                service = PythonService.mService
+                return service.getFilesDir().getAbsolutePath()
+            except Exception:
+                pass
+
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_dir = os.path.join(base_dir, "night_watch_data")
+    os.makedirs(data_dir, exist_ok=True)
+    return data_dir
+
