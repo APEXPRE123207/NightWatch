@@ -43,10 +43,12 @@ jobs:
             zip \
             unzip
 
-      - name: Cache Buildozer global directory
+      - name: Cache Buildozer global directory & ccache
         uses: actions/cache@v4
         with:
-          path: ~/.buildozer
+          path: |
+            ~/.buildozer
+            ~/.ccache
           key: ${{ runner.os }}-buildozer-global-${{ hashFiles('buildozer.spec') }}
           restore-keys: |
             ${{ runner.os }}-buildozer-global-
