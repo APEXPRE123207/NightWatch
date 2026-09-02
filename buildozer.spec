@@ -26,7 +26,7 @@ version = 0.1.0
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,pyjnius,numpy
+requirements = python3==3.11.9,hostpython3==3.11.9,kivy==2.3.0,pyjnius,numpy,android
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
@@ -35,10 +35,10 @@ orientation = portrait
 android.permissions = RECORD_AUDIO, FOREGROUND_SERVICE, FOREGROUND_SERVICE_MICROPHONE, WAKE_LOCK
 
 # (int) Target Android API, should be as high as possible.
-android.api = 33
+android.api = 34
 
 # (int) Minimum API your APK / AAB will support.
-android.minapi = 26
+android.minapi = 24
 
 # (int) Android NDK version to use
 android.ndk = 25b
