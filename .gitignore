@@ -33,3 +33,16 @@ Thumbs.db
 # Misc
 *.csv
 xtra
+
+# Flutter build artifacts
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+night_watch_flutter/build/
+night_watch_flutter/.dart_tool/
+night_watch_flutter/.flutter-plugins
+night_watch_flutter/.flutter-plugins-dependencies
+night_watch_flutter/android/.gradle/
+night_watch_flutter/android/local.properties
+
